@@ -1,11 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Social Quest</title>
+    <title>Social Quest | Sua Jornada Começa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+
+    <div id="progress-bar"></div>
+
+    <nav>
+        <div class="logo">SOCIAL QUEST</div>
+        <div class="nav-links">
+            <a href="Home.html">Home</a>
+            <a href="About.html">Sobre</a>
+            <a href="FAQ-Contact.html">FAQ</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Social Quest</h1>
+            <h2>Transforme a sua vida social em uma <span class="highlight">jornada épica</span>.</h2>
+            <p>Vença a timidez, complete missões no mundo real e suba de nível.</p>
+            <div class="cta-group">
+                <button class="btn-main">Começar a Jornada</button>
+                <button class="btn-sec">Baixar o App</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="section-title">
+            <h2>Escolha sua Missão</h2>
+            <p>Selecione uma dificuldade para ver um exemplo:</p>
+        </div>
+        
+        <div class="quest-selector">
+            <button onclick="changeQuest('beginner')">Iniciante</button>
+            <button onclick="changeQuest('legendary')">Lendário</button>
+        </div>
+
+        <div id="quest-card" class="card">
+            <p id="quest-text">Clique em um nível acima para carregar sua missão...</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3 id="coin-counter">0</h3>
+                <p>Moedas Coletadas</p>
+            </div>
+            <div class="stat-item">
+                <h3>Loja do Aventureiro</h3>
+                <p>Troque XP por Prêmios Reais</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="sanctuary">
+        <div class="container">
+            <h2>Santuário</h2>
+            <p>Um ambiente seguro, sem julgamentos e com progresso gradual para sua evolução.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Social Quest. Todos os direitos reservados à sua Guilda.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
