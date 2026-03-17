@@ -129,30 +129,79 @@ button {
 
 footer { padding: 40px; text-align: center; opacity: 0.6; font-size: 0.8rem; }
 
-.mission{
-display:flex;
-align-items:center;
-justify-content:center;
-padding:100px 80px;
-gap:60px;
+.mission {
+    display: flex;
+    align-items: center;
+    padding: 60px 10%;
+    gap: 80px;
 }
 
-.mission-text{
-max-width:500px;
+/* Efeito de Ziguezague */
+.mission:nth-of-type(even) {
+    flex-direction: row-reverse;
 }
 
-.mission-text h2{
-font-size:32px;
-margin-bottom:20px;
-color: #fbbf24;
+.mission-text { flex: 1; }
+.mission-image { flex: 1; }
+
+.mission-image img {
+    width: 100%;
+    border-radius: 15px;
+    filter: grayscale(20%);
+    border: 2px solid var(--primary);
 }
 
-.mission-text p{
-margin-bottom:15px;
-line-height:1.6;
+/* Seção da Equipe */
+.team-section {
+    padding: 80px 10%;
+    background: rgba(30, 41, 59, 0.5);
+    text-align: center;
 }
 
-.mission-image img{
-width:420px;
-border-radius:15px;
+.team-title {
+    font-size: 2.5rem;
+    color: var(--secondary);
+    margin-bottom: 50px;
 }
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.member-card {
+    background: var(--card);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid #334155;
+    transition: 0.3s ease;
+}
+
+.member-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--secondary);
+}
+
+.member-photo {
+    width: 100px;
+    height: 100px;
+    background: #475569;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+}
+
+.member-card h3 { color: var(--text); margin-bottom: 5px; }
+.role { color: var(--primary); font-weight: bold; font-size: 0.9rem; text-transform: uppercase; }
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 15px 0;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--secondary);
+}
+
+.bio { font-size: 0.9rem; color: #94a3b8; line-height: 1.5; }
