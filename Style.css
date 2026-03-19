@@ -1,10 +1,11 @@
-/* Variáveis de Cores RPG */
+/* Variáveis de Cores Taverna */
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
 :root {
-    --primary: #7c3aed; /* Roxo vibrante */
-    --secondary: #fbbf24; /* Dourado */
-    --bg: #0f172a; /* Azul escuro quase preto */
-    --card: #1e293b;
-    --text: #f8fafc;
+    --primary: #8B4513; /* Marrom escuro */
+    --secondary: #FFD700; /* Dourado */
+    --bg: #2F1B14; /* Marrom muito escuro */
+    --card: #E8DCC0; /* Papel sujo */
+    --text: #F5F5DC; /* Bege claro */
     --success: #10b981;
 }
 
@@ -15,8 +16,24 @@
     font-family: 'Inter', sans-serif;
 }
 
+.faq-page h1,
+.faq-page h2,
+.faq-page h3 {
+    font-family: 'MedievalSharp', 'Old English Text MT', serif;
+}
+
+.faq-page h1 {
+    font-size: 2.75rem;
+    letter-spacing: 1px;
+}
+
+
 body {
     background-color: var(--bg);
+    background-image: url('https://static.vecteezy.com/system/resources/previews/012/687/745/large_2x/background-from-brown-wooden-vertical-planks-wood-texture-banner-design-with-copy-space-stock-illustration-vector.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: var(--text);
     overflow-x: hidden;
 }
@@ -39,11 +56,12 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 20px 10%;
-    background: rgba(15, 23, 42, 0.9);
+    background: rgba(47, 27, 20, 0.95);
     backdrop-filter: blur(10px);
     position: sticky;
     top: 0;
     z-index: 999;
+    border-bottom: 2px solid var(--primary);
 }
 
 .logo {
@@ -67,6 +85,22 @@ nav {
     padding: 100px 10%;
     max-width: 1140px;
     margin: 0 auto;
+    background: linear-gradient(180deg, rgba(47,27,20,0.85) 0%, rgba(47,27,20,0.95) 100%);
+    border: 2px solid rgba(139,69,19,0.6);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    backdrop-filter: blur(2px);
+    position: relative;
+}
+
+.faq-page::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('https://static.vecteezy.com/system/resources/previews/012/687/745/large_2x/background-from-brown-wooden-vertical-planks-wood-texture-banner-design-with-copy-space-stock-illustration-vector.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+    z-index: -1;
 }
 
 .faq-page h1 {
@@ -74,24 +108,59 @@ nav {
     color: var(--secondary);
     font-size: 2.4rem;
     margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .faq-item {
-    margin-bottom: 20px;
-    padding: 18px;
+    margin-bottom: 30px;
+    padding: 20px;
     border-radius: 15px;
-    background-color: rgba(15, 23, 42, 0.7);
-    border: 1px solid rgba(124, 58, 237, 0.25);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+    background-color: var(--card);
+    border: 3px solid var(--primary);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    transform: rotate(-0.5deg);
+}
+
+.faq-item:nth-child(even) {
+    transform: rotate(0.5deg);
+}
+
+.faq-item::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background: #FFD700;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.faq-section {
+    margin-top: 40px;
+}
+
+.faq-section-title {
+    margin-bottom: 20px;
+    color: var(--secondary);
+    font-size: 1.8rem;
+    border-left: 4px solid var(--secondary);
+    padding-left: 12px;
 }
 
 .faq-item h2 {
-    color: #d8b4fe;
+    color: #000000;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .faq-item p,
 .faq-item li {
-    color: #cbd5e1;
+    color: #333333;
     line-height: 1.6;
 }
 
@@ -113,7 +182,7 @@ nav {
 }
 
 .go-home:hover {
-    background-color: #5b21b6;
+    background-color: #654321;
 }
 
 /* Hero Section */
@@ -123,11 +192,88 @@ nav {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: radial-gradient(circle at center, #1e1b4b 0%, var(--bg) 100%);
+    background-image: linear-gradient(rgba(47, 27, 20, 0.45), rgba(47, 27, 20, 0.45)), url('https://static.vecteezy.com/system/resources/previews/012/687/745/large_2x/background-from-brown-wooden-vertical-planks-wood-texture-banner-design-with-copy-space-stock-illustration-vector.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+    position: relative;
 }
 
-.hero h1 { font-size: 4rem; text-transform: uppercase; margin-bottom: 10px; }
-.highlight { color: var(--secondary); text-shadow: 0 0 15px rgba(251, 191, 36, 0.4); }
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    background-image: url('https://png.pngtree.com/png-vector/20230814/ourmid/pngtree-ale-mug-and-beer-barrel-vector-illustration-with-wooden-barrel-sticker-png-image_6901603.png'); /* Coloque sua URL de imagem aqui */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.40;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero .hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Background de madeira geral na página (geral) */
+body {
+    background-color: var(--bg);
+    background-image: url(''); /* URL da madeira de fundo */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+/* Seção de Missões, com quadradinhos por baixo */
+.features {
+    padding: 80px 10%;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(47, 27, 20, 0.6) 0%, rgba(47, 27, 20, 0.9) 100%);
+    position: relative;
+    border-top: 2px solid rgba(255, 215, 0, 0.35);
+    box-shadow: inset 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.features::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -22px;
+    height: 50px;
+    background: linear-gradient(180deg, rgba(47, 27, 20, 0.0), rgba(47, 27, 20, 0.85));
+    z-index: 1;
+    pointer-events: none;
+}
+
+.features::after {
+    content: '';
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    top: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.6), transparent);
+    z-index: 2;
+}
+
+.features > * {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 { font-size: 4rem; text-transform: uppercase; margin-bottom: 10px; color: white; }
+.hero h2 { color: var(--text); }
+.hero p { color: var(--text); }
 
 .cta-group { margin-top: 30px; }
 
@@ -150,14 +296,19 @@ button {
 /* Seção de Missões */
 .features { padding: 80px 10%; text-align: center; }
 
+.features h2 { color: var(--secondary); }
+.features p { color: var(--text); }
+
 .quest-selector { margin-bottom: 20px; }
-.quest-selector button { background: #334155; color: white; margin: 5px; padding: 10px 20px; }
+.quest-selector button { background: var(--primary); color: white; margin: 5px; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; transition: 0.3s; }
+
+.quest-selector button:hover { background: #654321; }
 
 .card {
     background: var(--card);
     padding: 40px;
     border-radius: 20px;
-    border: 1px solid #334155;
+    border: 2px solid var(--primary);
     min-height: 150px;
     display: flex;
     align-items: center;
@@ -165,12 +316,54 @@ button {
     font-size: 1.2rem;
     margin-bottom: 40px;
     transition: 0.5s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    color: var(--bg);
 }
 
 .stats-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+}
+
+.stat-item {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid var(--primary);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    text-align: center;
+    color: var(--bg);
+}
+
+.stat-item h3 {
+    color: var(--primary);
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.stat-item p {
+    color: #333333;
+}
+
+/* Santuário */
+.sanctuary {
+    padding: 80px 10%;
+    text-align: center;
+    background: rgba(47, 27, 20, 0.1);
+}
+
+.sanctuary h2 {
+    color: var(--secondary);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.sanctuary p {
+    color: var(--text);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .stat-item {
@@ -181,7 +374,7 @@ button {
 
 .stat-item h3 { color: var(--secondary); font-size: 2rem; }
 
-footer { padding: 40px; text-align: center; opacity: 0.6; font-size: 0.8rem; }
+footer { padding: 40px; text-align: center; color: var(--text); font-size: 0.8rem; }
 
 .mission {
     display: flex;
