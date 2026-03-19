@@ -102,3 +102,26 @@ styleSheet.innerHTML = `
     }
 `;
 document.head.appendChild(styleSheet);
+
+// --- 7. TEMA CLARO / ESCURO ---
+const themeToggle = document.getElementById('theme-toggle');
+
+function applyTheme(theme) {
+    document.body.classList.toggle('light', theme === 'light');
+    document.body.classList.toggle('dark', theme === 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+    if (themeToggle) {
+        themeToggle.textContent = theme === 'light' ? '🌞' : '🌜';
+    }
+    localStorage.setItem('theme', theme);
+}
+
+const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+applyTheme(savedTheme);
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const current = document.body.classList.contains('light') ? 'light' : 'dark';
+        applyTheme(current === 'light' ? 'dark' : 'light');
+    });
+}

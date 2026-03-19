@@ -1,30 +1,73 @@
 /* Variáveis de Cores Taverna */
 @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&display=swap');
 :root {
-    --primary: #8B4513; /* Marrom escuro */
+    --primary: #7B3F00; /* Marrom rico */
     --secondary: #FFD700; /* Dourado */
     --bg: #2F1B14; /* Marrom muito escuro */
     --card: #E8DCC0; /* Papel sujo */
-    --text: #F5F5DC; /* Bege claro */
+    --text: #F0E6D2; /* Creme claro */
+    --text-strong: #FFFFFF;
+    --shadow: rgba(0, 0, 0, 0.45);
+    --link: #FFE066;
+    --hover: #FFEB9A;
     --success: #10b981;
+}
+
+body.light {
+    --primary: #A67C52;
+    --secondary: #995a04;
+    --bg: #EFE6DC;
+    --card: #FFF8ED;
+    --text: #3F2A1A;
+    --text-strong: #2b1e12;
+    --shadow: rgba(0, 0, 0, 0.22);
+    --link: #6b3d00;
+    --hover: #a9743e;
+}
+
+body.dark {
+    --primary: #7B3F00;
+    --secondary: #FFD700;
+    --bg: #2F1B14;
+    --card: #E8DCC0;
+    --text: #F0E6D2;
+    --text-strong: #FFFFFF;
+    --shadow: rgba(0, 0, 0, 0.45);
+    --link: #FFE066;
+    --hover: #FFEB9A;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Crimson Text', serif;
+}
+
+html {
+    color-scheme: dark;
+}
+
+body.light {
+    color-scheme: light;
 }
 
 .faq-page h1,
 .faq-page h2,
 .faq-page h3 {
-    font-family: 'MedievalSharp', 'Old English Text MT', serif;
+    font-family: 'MedievalSharp', 'Cinzel', serif;
 }
 
 .faq-page h1 {
     font-size: 2.75rem;
     letter-spacing: 1px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'MedievalSharp', 'Cinzel', serif;
 }
 
 
@@ -36,6 +79,7 @@ body {
     background-attachment: fixed;
     color: var(--text);
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Barra de progresso no topo */
@@ -56,7 +100,8 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 20px 10%;
-    background: rgba(47, 27, 20, 0.95);
+    background: linear-gradient(rgba(47, 27, 20, 0.95), rgba(47, 27, 20, 0.95)), url('https://static.vecteezy.com/system/resources/previews/012/687/745/large_2x/background-from-brown-wooden-vertical-planks-wood-texture-banner-design-with-copy-space-stock-illustration-vector.jpg');
+    background-size: auto, cover;
     backdrop-filter: blur(10px);
     position: sticky;
     top: 0;
@@ -67,7 +112,9 @@ nav {
 .logo {
     font-weight: 900;
     letter-spacing: 2px;
-    color: var(--primary);
+    color: var(--secondary);
+    font-family: 'MedievalSharp', serif;
+    font-size: 1.5rem;
 }
 
 .nav-links a {
@@ -76,19 +123,39 @@ nav {
     margin-left: 20px;
     font-size: 0.9rem;
     transition: 0.3s;
+    font-family: 'Cinzel', serif;
 }
 
-.nav-links a:hover { color: var(--secondary); }
+.nav-links a:hover { color: var(--hover); }
+
+.theme-toggle {
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: translateY(-1px);
+}
+
 
 /* FAQ / Contact */
 .faq-page {
-    padding: 100px 10%;
-    max-width: 1140px;
-    margin: 0 auto;
-    background: linear-gradient(180deg, rgba(47,27,20,0.85) 0%, rgba(47,27,20,0.95) 100%);
-    border: 2px solid rgba(139,69,19,0.6);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-    backdrop-filter: blur(2px);
+    padding: 30px 30px;
+    max-width: 760px;
+    margin: 30px auto;
+    background: linear-gradient(180deg, rgba(47,27,20,0.80) 0%, rgba(47,27,20,0.90) 100%), url('https://static.vecteezy.com/system/resources/previews/012/687/745/large_2x/background-from-brown-wooden-vertical-planks-wood-texture-banner-design-with-copy-space-stock-illustration-vector.jpg');
+    background-size: auto, cover;
+    border: 3px solid rgba(204, 153, 51, 0.85);
+    border-radius: 30px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+    backdrop-filter: blur(3px);
     position: relative;
 }
 
@@ -97,25 +164,72 @@ nav {
     position: absolute;
     inset: 0;
     background-image: url('https://static.vecteezy.com/system/resources/previews/012/687/745/large_2x/background-from-brown-wooden-vertical-planks-wood-texture-banner-design-with-copy-space-stock-illustration-vector.jpg');
-    background-size: cover;
-    background-position: center;
+    background-size: cover, cover;
+    background-position: center, center;
+    background-blend-mode: overlay;
     opacity: 0.2;
     z-index: -1;
 }
 
 .faq-page h1 {
     text-align: center;
-    color: var(--secondary);
+    color: #FFD700;
     font-size: 2.4rem;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     text-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
+.faq-page h2 {
+    text-align: center;
+    color: #F3E2B1;
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+    line-height: 1.25;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.35);
+    border-bottom: 2px solid rgba(255, 215, 0, 0.5);
+    display: inline-block;
+    padding-bottom: 8px;
+}
+
+.faq-page > p {
+    text-align: center;
+    color: #DEB887;
+    font-size: 1.1rem;
+    margin: 10px auto 25px;
+    padding: 8px 16px;
+    max-width: 80%;
+    border: 1px dashed rgba(255, 255, 255, 0.4);
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+}
+
+.faq-section-title {
+    margin-bottom: 10px;
+    color: #FFD700;
+    font-size: 1.8rem;
+    border-left: 4px solid var(--secondary);
+    padding-left: 12px;
+    font-family: 'MedievalSharp', serif;
+    text-align: center;
+    margin: 20px auto 12px;
+    display: table;
+    background: rgba(0,0,0,0.25);
+    padding: 8px 14px;
+    border-radius: 10px;
+}
+
 .faq-item {
-    margin-bottom: 30px;
-    padding: 20px;
+    margin-bottom: 15px;
+    padding: 15px;
     border-radius: 15px;
     background-color: var(--card);
+    background-image: url('https://www.onlygfx.com/wp-content/uploads/2015/11/dirty-old-paper-2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;   
     border: 3px solid var(--primary);
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     position: relative;
@@ -134,38 +248,40 @@ nav {
     transform: translateX(-50%);
     width: 20px;
     height: 20px;
-    background: #FFD700;
+    background: radial-gradient(circle at 30% 30%, #B0B0B0, #505050);
     border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5), inset -2px -2px 4px rgba(0,0,0,0.6);
 }
 
 .faq-section {
-    margin-top: 40px;
+    margin-top: 15px;
 }
 
 .faq-section-title {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     color: var(--secondary);
     font-size: 1.8rem;
     border-left: 4px solid var(--secondary);
     padding-left: 12px;
+    font-family: 'MedievalSharp', serif;
 }
 
 .faq-item h2 {
-    color: #000000;
+    color: var(--text-strong);
     font-size: 1.5rem;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     font-weight: bold;
+    font-family: 'Cinzel', serif;
 }
 
 .faq-item p,
 .faq-item li {
-    color: #333333;
-    line-height: 1.6;
+    color: var(--text-strong);
+    line-height: 1.4;
 }
 
 .faq-item ul {
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
 .go-home {
@@ -174,7 +290,7 @@ nav {
     padding: 12px 22px;
     border-radius: 8px;
     background-color: var(--primary);
-    color: #fff;
+    color: var(--text-strong);
     font-size: 16px;
     text-decoration: none;
     cursor: pointer;
@@ -182,12 +298,12 @@ nav {
 }
 
 .go-home:hover {
-    background-color: #654321;
+    background-color: rgba(102, 66, 33, 0.9);
 }
 
 /* Hero Section */
 .hero {
-    height: 80vh;
+    height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -225,9 +341,9 @@ nav {
 /* Background de madeira geral na página (geral) */
 body {
     background-color: var(--bg);
-    background-image: url(''); /* URL da madeira de fundo */
+    background-image: url('https://wallpapers.com/images/hd/tavern-background-67u2saz1pel0khcy.jpg');
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     background-attachment: fixed;
     color: var(--text);
     overflow-x: hidden;
@@ -235,9 +351,15 @@ body {
 
 /* Seção de Missões, com quadradinhos por baixo */
 .features {
-    padding: 80px 10%;
+    padding: 50px 5%;
     text-align: center;
-    background: linear-gradient(180deg, rgba(47, 27, 20, 0.6) 0%, rgba(47, 27, 20, 0.9) 100%);
+    background: linear-gradient(180deg, rgba(60, 30, 15, 0.70) 0%, rgba(47, 27, 20, 0.85) 100%), url('https://static.vecteezy.com/system/resources/previews/012/687/745/large_2x/background-from-brown-wooden-vertical-planks-wood-texture-banner-design-with-copy-space-stock-illustration-vector.jpg');
+    background-size: auto, cover;
+    max-width: 900px;
+    margin: 20px auto;
+    border: 3px solid var(--primary);
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
     position: relative;
     border-top: 2px solid rgba(255, 215, 0, 0.35);
     box-shadow: inset 0 8px 20px rgba(0,0,0,0.2);
@@ -271,11 +393,11 @@ body {
     z-index: 1;
 }
 
-.hero h1 { font-size: 4rem; text-transform: uppercase; margin-bottom: 10px; color: white; }
-.hero h2 { color: var(--text); }
-.hero p { color: var(--text); }
+.hero h1 { font-size: 4rem; text-transform: uppercase; margin-bottom: 10px; color: var(--text-strong); font-family: 'MedievalSharp', serif; }
+.hero h2 { color: var(--secondary); font-size: 2rem; text-align: center; margin-bottom: 20px; font-family: 'Cinzel', serif; }
+.hero p { color: var(--secondary); font-size: 1.2rem; text-align: center; font-family: 'Crimson Text', serif; }
 
-.cta-group { margin-top: 30px; }
+.cta-group { margin-top: 15px; }
 
 button {
     padding: 15px 35px;
@@ -285,6 +407,8 @@ button {
     font-weight: bold;
     transition: 0.3s;
     text-transform: uppercase;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
 }
 
 .btn-main { background: var(--primary); color: white; margin-right: 15px; }
@@ -299,22 +423,22 @@ button {
 .features h2 { color: var(--secondary); }
 .features p { color: var(--text); }
 
-.quest-selector { margin-bottom: 20px; }
-.quest-selector button { background: var(--primary); color: white; margin: 5px; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; transition: 0.3s; }
+.quest-selector { margin-bottom: 10px; }
+.quest-selector button { background: var(--primary); color: white; margin: 3px; padding: 8px 15px; border: none; border-radius: 8px; cursor: pointer; transition: 0.3s; }
 
 .quest-selector button:hover { background: #654321; }
 
 .card {
     background: var(--card);
-    padding: 40px;
+    padding: 25px;
     border-radius: 20px;
     border: 2px solid var(--primary);
-    min-height: 150px;
+    min-height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
-    margin-bottom: 40px;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
     transition: 0.5s;
     box-shadow: 0 4px 8px rgba(0,0,0,0.5);
     color: var(--bg);
@@ -323,12 +447,12 @@ button {
 .stats-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 12px;
 }
 
 .stat-item {
     background: var(--card);
-    padding: 20px;
+    padding: 15px;
     border-radius: 15px;
     border: 2px solid var(--primary);
     box-shadow: 0 4px 8px rgba(0,0,0,0.5);
@@ -337,20 +461,25 @@ button {
 }
 
 .stat-item h3 {
-    color: var(--primary);
+    color: #FFD700;
     font-size: 2rem;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .stat-item p {
-    color: #333333;
+    color: var(--text-strong);
 }
 
 /* Santuário */
 .sanctuary {
-    padding: 80px 10%;
+    padding: 40px 50px;
     text-align: center;
-    background: rgba(47, 27, 20, 0.1);
+    background: linear-gradient(rgba(70, 35, 20, 0.75), rgba(70, 35, 20, 0.75)), url('https://static.vecteezy.com/system/resources/previews/012/687/745/large_2x/background-from-brown-wooden-vertical-planks-wood-texture-banner-design-with-copy-space-stock-illustration-vector.jpg');
+    background-size: auto, cover;
+    max-width: 800px;
+    margin: 20px auto;
+    border: 2px solid rgba(139, 69, 19, 0.5);
+    border-radius: 15px;
 }
 
 .sanctuary h2 {
@@ -367,7 +496,8 @@ button {
 }
 
 .stat-item {
-    background: rgba(124, 58, 237, 0.1);
+    background: linear-gradient(rgba(139, 69, 19, 0.65), rgba(139, 69, 19, 0.65)), url('https://static.vecteezy.com/system/resources/previews/012/687/745/large_2x/background-from-brown-wooden-vertical-planks-wood-texture-banner-design-with-copy-space-stock-illustration-vector.jpg');
+    background-size: auto, cover;
     padding: 30px;
     border-radius: 15px;
 }
@@ -376,11 +506,45 @@ button {
 
 footer { padding: 40px; text-align: center; color: var(--text); font-size: 0.8rem; }
 
+/* Container do About */
+.about-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Seção de Título do About */
+.section-title {
+    padding: 40px 50px;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(100, 50, 25, 0.70) 0%, rgba(85, 42, 20, 0.65) 100%), url('https://static.vecteezy.com/system/resources/previews/012/687/745/large_2x/background-from-brown-wooden-vertical-planks-wood-texture-banner-design-with-copy-space-stock-illustration-vector.jpg');
+    background-size: auto, cover;
+    margin: 20px 0;
+}
+
+.section-title h1 {
+    font-size: 2.5rem;
+    color: var(--secondary);
+    margin-bottom: 15px;
+    font-family: 'MedievalSharp', serif;
+}
+
+.section-title p {
+    font-size: 1.1rem;
+    color: var(--text);
+    font-family: 'Cinzel', serif;
+}
+
 .mission {
     display: flex;
     align-items: center;
-    padding: 60px 10%;
-    gap: 80px;
+    padding: 40px 50px;
+    gap: 40px;
+    background: linear-gradient(rgba(139, 69, 19, 0.55), rgba(139, 69, 19, 0.55)), url('https://static.vecteezy.com/system/resources/previews/012/687/745/large_2x/background-from-brown-wooden-vertical-planks-wood-texture-banner-design-with-copy-space-stock-illustration-vector.jpg');
+    background-size: auto, cover;
+    border: 2px solid rgba(139,69,19,0.5);
+    border-radius: 15px;
+    margin: 20px 0;
 }
 
 /* Efeito de Ziguezague */
@@ -389,66 +553,90 @@ footer { padding: 40px; text-align: center; color: var(--text); font-size: 0.8re
 }
 
 .mission-text { flex: 1; }
+
+.mission-text h2 {
+    font-size: 1.8rem;
+    color: var(--text-strong);
+    font-family: 'Cinzel', serif;
+    margin-bottom: 10px;
+}
+
+.mission-text p {
+    color: var(--text);
+    line-height: 1.5;
+    font-family: 'Crimson Text', serif;
+}
 .mission-image { flex: 1; }
 
 .mission-image img {
     width: 100%;
     border-radius: 15px;
     filter: grayscale(20%);
-    border: 2px solid var(--primary);
+    border: 3px solid var(--primary);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
 /* Seção da Equipe */
 .team-section {
-    padding: 80px 10%;
-    background: rgba(30, 41, 59, 0.5);
+    padding: 40px 50px;
+    background: linear-gradient(rgba(85, 42, 20, 0.60), rgba(85, 42, 20, 0.60)), url('https://static.vecteezy.com/system/resources/previews/012/687/745/large_2x/background-from-brown-wooden-vertical-planks-wood-texture-banner-design-with-copy-space-stock-illustration-vector.jpg');
+    background-size: auto, cover;
+    border: 2px solid rgba(139, 69, 19, 0.5);
+    border-radius: 15px;
+    margin: 20px 0;
     text-align: center;
 }
 
 .team-title {
     font-size: 2.5rem;
-    color: var(--secondary);
-    margin-bottom: 50px;
+    color: #FFD700;
+    margin-bottom: 30px;
+    font-family: 'MedievalSharp', serif;
 }
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
 .member-card {
     background: var(--card);
-    padding: 30px;
-    border-radius: 20px;
-    border: 1px solid #334155;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid var(--primary);
     transition: 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
 .member-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
     border-color: var(--secondary);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
 }
 
 .member-photo {
-    width: 100px;
-    height: 100px;
-    background: #475569;
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, #8B4513, #654321);
+    border: 3px solid var(--primary);
     border-radius: 50%;
-    margin: 0 auto 20px;
+    margin: 0 auto 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
 }
 
-.member-card h3 { color: var(--text); margin-bottom: 5px; }
-.role { color: var(--primary); font-weight: bold; font-size: 0.9rem; text-transform: uppercase; }
+.member-card h3 { color: var(--text-strong); margin-bottom: 5px; font-family: 'Cinzel', serif; font-size: 1.2rem; }
+.role { color: var(--text-strong); font-weight: bold; font-size: 0.9rem; text-transform: uppercase; font-family: 'Cinzel', serif; }
 
 .stats {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    margin: 15px 0;
-    font-size: 0.8rem;
+    gap: 10px;
+    margin: 10px 0;
+    font-size: 0.75rem;
     font-weight: bold;
-    color: var(--secondary);
+    color: var(--text-strong);
+    flex-wrap: wrap;
 }
 
-.bio { font-size: 0.9rem; color: #94a3b8; line-height: 1.5; }
+.bio { font-size: 0.85rem; color: var(--text-strong); line-height: 1.4; }
