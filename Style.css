@@ -1,642 +1,329 @@
-/* Variáveis de Cores Taverna */
-@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=MedievalSharp&family=Inter:wght@400;500;700&display=swap');
+
 :root {
-    --primary: #7B3F00; /* Marrom rico */
-    --secondary: #FFD700; /* Dourado */
-    --bg: #2F1B14; /* Marrom muito escuro */
-    --card: #E8DCC0; /* Papel sujo */
-    --text: #F0E6D2; /* Creme claro */
-    --text-strong: #FFFFFF;
-    --shadow: rgba(0, 0, 0, 0.45);
-    --link: #FFE066;
-    --hover: #FFEB9A;
-    --success: #10b981;
+    /* Color Palette - Medieval Tavern Default */
+    --primary: #d4af37; /* Gold */
+    --primary-dim: rgba(212, 175, 55, 0.6);
+    --primary-glow: rgba(212, 175, 55, 0.25);
+    
+    --bg-base: #1c140f; /* Very dark brown wood color */
+    
+    /* Parchment Surface */
+    --bg-surface: #f4ecce; /* Light parchment */
+    --bg-surface-hover: #fff6d9;
+    
+    --text-strong: #2a1e12;     --text-main: #3a2a18;
+    --text-muted: #5e4629;
+    --text-light: #f4ecce;
+    
+    --border-light: rgba(94, 70, 41, 0.2);
+    --border-strong: #5e4629;
+    
+    --shadow-base: 0 8px 16px rgba(0, 0, 0, 0.6);
+    --shadow-glow: 0 0 20px rgba(212, 175, 55, 0.15);
+    
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-body.light {
-    --primary: #A67C52;
-    --secondary: #995a04;
-    --bg: #EFE6DC;
-    --card: #FFF8ED;
-    --text: #3F2A1A;
-    --text-strong: #2b1e12;
-    --shadow: rgba(0, 0, 0, 0.22);
-    --link: #6b3d00;
-    --hover: #a9743e;
-}
-
-body.dark {
-    --primary: #7B3F00;
-    --secondary: #FFD700;
-    --bg: #2F1B14;
-    --card: #E8DCC0;
-    --text: #F0E6D2;
-    --text-strong: #FFFFFF;
-    --shadow: rgba(0, 0, 0, 0.45);
-    --link: #FFE066;
-    --hover: #FFEB9A;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Crimson Text', serif;
-}
-
-html {
-    color-scheme: dark;
-}
-
-body.light {
-    color-scheme: light;
-}
-
-.faq-page h1,
-.faq-page h2,
-.faq-page h3 {
-    font-family: 'MedievalSharp', 'Cinzel', serif;
-}
-
-.faq-page h1 {
-    font-size: 2.75rem;
-    letter-spacing: 1px;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'MedievalSharp', 'Cinzel', serif;
-}
-
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background-color: var(--bg);
-    background-image: url('https://static.vecteezy.com/system/resources/previews/012/687/745/large_2x/background-from-brown-wooden-vertical-planks-wood-texture-banner-design-with-copy-space-stock-illustration-vector.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    color: var(--text);
+    background-color: var(--bg-base);
+    background-image: repeating-linear-gradient(to right, #1c140f 0px, #150e0a 15px, #1c140f 30px);
+    color: var(--text-light);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
     overflow-x: hidden;
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Barra de progresso no topo */
+h1, h2, h3, h4, .brand-logo {
+    font-family: 'MedievalSharp', 'Cinzel', serif;
+    color: var(--primary);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.glass-card h1, .glass-card h2, .glass-card h3, .glass-card h4,
+.parchment-card h1, .parchment-card h2, .parchment-card h3, .parchment-card h4, 
+.pinned-paper h1, .pinned-paper h2, .pinned-paper h3, .pinned-paper h4 {
+    color: #4a1c1c; /* Crimson ink */
+    text-shadow: none;
+}
+
+p { margin-bottom: 1rem; }
+a { color: var(--primary); text-decoration: none; transition: color var(--transition-fast); }
+a:hover { color: #fff; text-shadow: 0 0 8px var(--primary-glow); }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
 #progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 4px;
-    background: var(--primary);
-    width: 0%;
-    z-index: 1000;
-    transition: width 0.1s;
+    position: fixed; top: 0; left: 0; height: 4px; z-index: 1000;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    width: 0%; box-shadow: 0 0 10px var(--primary); transition: width 0.1s linear;
 }
 
-/* Navegação */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 10%;
-    background: linear-gradient(rgba(47, 27, 20, 0.95), rgba(47, 27, 20, 0.95)), url('https://static.vecteezy.com/system/resources/previews/012/687/745/large_2x/background-from-brown-wooden-vertical-planks-wood-texture-banner-design-with-copy-space-stock-illustration-vector.jpg');
-    background-size: auto, cover;
-    backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    border-bottom: 2px solid var(--primary);
+/* Navbar stylized as a thick wooden beam */
+.navbar {
+    position: sticky; top: 0; z-index: 999; padding: 1rem 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    background: #2a1610;
+    background-image: repeating-linear-gradient(to bottom, rgba(0,0,0,0.3) 0px, rgba(0,0,0,0.3) 2px, transparent 2px, transparent 20px);
+    border-bottom: 4px solid #150e0a;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.8);
 }
 
-.logo {
-    font-weight: 900;
-    letter-spacing: 2px;
-    color: var(--secondary);
-    font-family: 'MedievalSharp', serif;
-    font-size: 1.5rem;
+.brand-logo {
+    font-size: 1.5rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;
+    display: flex; align-items: center; gap: 0.5rem;
 }
 
-.nav-links a {
-    color: var(--text);
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 0.9rem;
-    transition: 0.3s;
-    font-family: 'Cinzel', serif;
+.brand-logo::before { content: '🍻'; font-size: 1.5rem; } /* Beer mug logo */
+
+.nav-links { display: flex; gap: 2rem; }
+.nav-links a { color: var(--text-light); font-family: 'Cinzel', serif; font-weight: 700; font-size: 1rem; position: relative; padding: 0.5rem 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); }
+.nav-links a::after {
+    content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px;
+    background: var(--primary); transition: var(--transition-smooth); transform: translateX(-50%);
 }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.nav-links a.active { color: var(--primary); }
+.theme-toggle { display: none; }
 
-.nav-links a:hover { color: var(--hover); }
-
-.theme-toggle {
-    color: var(--text);
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 10px;
-    padding: 8px 12px;
-    cursor: pointer;
-    font-family: 'Cinzel', serif;
-    transition: background 0.25s ease, transform 0.2s ease;
+/* Buttons */
+.btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0.8rem 2rem; font-family: 'Cinzel', serif; font-weight: 700; font-size: 1rem;
+    text-transform: uppercase; letter-spacing: 1px; border-radius: 4px;
+    cursor: pointer; transition: var(--transition-smooth); border: 2px solid transparent;
+    position: relative; overflow: hidden; background: #4a1c1c; color: var(--text-light);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.5);
 }
+.btn:hover { background: #5a2222; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.6); }
 
-.theme-toggle:hover {
-    background: rgba(255, 255, 255, 0.22);
-    transform: translateY(-1px);
-}
+.btn-primary { background: var(--primary); color: #100e0d; text-shadow: none; border: 2px solid #5e4629; }
+.btn-primary:hover { background: #e6c243; box-shadow: 0 0 25px var(--primary-dim); }
+.btn-outline { background: transparent; color: var(--primary); border-color: var(--primary); }
+.btn-outline:hover { background: rgba(212, 175, 55, 0.1); transform: translateY(-2px); }
 
-
-/* FAQ / Contact */
-.faq-page {
-    padding: 30px 30px;
-    max-width: 760px;
-    margin: 30px auto;
-    background: linear-gradient(180deg, rgba(47,27,20,0.80) 0%, rgba(47,27,20,0.90) 100%), url('https://static.vecteezy.com/system/resources/previews/012/687/745/large_2x/background-from-brown-wooden-vertical-planks-wood-texture-banner-design-with-copy-space-stock-illustration-vector.jpg');
-    background-size: auto, cover;
-    border: 3px solid rgba(204, 153, 51, 0.85);
-    border-radius: 30px;
-    box-shadow: 0 18px 40px rgba(0,0,0,0.6);
-    backdrop-filter: blur(3px);
-    position: relative;
-}
-
-.faq-page::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url('https://static.vecteezy.com/system/resources/previews/012/687/745/large_2x/background-from-brown-wooden-vertical-planks-wood-texture-banner-design-with-copy-space-stock-illustration-vector.jpg');
-    background-size: cover, cover;
-    background-position: center, center;
-    background-blend-mode: overlay;
-    opacity: 0.2;
-    z-index: -1;
-}
-
-.faq-page h1 {
-    text-align: center;
-    color: #FFD700;
-    font-size: 2.4rem;
-    margin-bottom: 15px;
-    text-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-
-.faq-page h2 {
-    text-align: center;
-    color: #F3E2B1;
-    font-family: 'Cinzel', serif;
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-    letter-spacing: 0.5px;
-    line-height: 1.25;
-    text-shadow: 0 0 6px rgba(0, 0, 0, 0.35);
-    border-bottom: 2px solid rgba(255, 215, 0, 0.5);
+/* Wooden Planks Helper Class */
+.wooden-plank {
+    background: #3b2818;
+    background-image: repeating-linear-gradient(to bottom, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.1) 2px, transparent 2px, transparent 15px);
+    border: 3px solid #1c0f08;
+    border-radius: 4px;
+    box-shadow: 2px 4px 8px rgba(0,0,0,0.6), inset 0 2px 4px rgba(255,255,255,0.1);
+    color: var(--primary);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+    padding: 10px 20px;
     display: inline-block;
-    padding-bottom: 8px;
 }
 
-.faq-page > p {
-    text-align: center;
-    color: #DEB887;
-    font-size: 1.1rem;
-    margin: 10px auto 25px;
-    padding: 8px 16px;
-    max-width: 80%;
-    border: 1px dashed rgba(255, 255, 255, 0.4);
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 12px;
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
-}
-
-.faq-section-title {
-    margin-bottom: 10px;
-    color: #FFD700;
-    font-size: 1.8rem;
-    border-left: 4px solid var(--secondary);
-    padding-left: 12px;
-    font-family: 'MedievalSharp', serif;
-    text-align: center;
-    margin: 20px auto 12px;
-    display: table;
-    background: rgba(0,0,0,0.25);
-    padding: 8px 14px;
-    border-radius: 10px;
-}
-
-.faq-item {
-    margin-bottom: 15px;
-    padding: 15px;
-    border-radius: 15px;
-    background-color: var(--card);
-    background-image: url('https://www.onlygfx.com/wp-content/uploads/2015/11/dirty-old-paper-2.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;   
-    border: 3px solid var(--primary);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    position: relative;
-    transform: rotate(-0.5deg);
-}
-
-.faq-item:nth-child(even) {
-    transform: rotate(0.5deg);
-}
-
-.faq-item::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 20px;
-    background: radial-gradient(circle at 30% 30%, #B0B0B0, #505050);
-    border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.5), inset -2px -2px 4px rgba(0,0,0,0.6);
-}
-
-.faq-section {
-    margin-top: 15px;
-}
-
-.faq-section-title {
-    margin-bottom: 10px;
-    color: var(--secondary);
-    font-size: 1.8rem;
-    border-left: 4px solid var(--secondary);
-    padding-left: 12px;
-    font-family: 'MedievalSharp', serif;
-}
-
-.faq-item h2 {
-    color: var(--text-strong);
-    font-size: 1.5rem;
-    margin-bottom: 8px;
-    font-weight: bold;
-    font-family: 'Cinzel', serif;
-}
-
-.faq-item p,
-.faq-item li {
-    color: var(--text-strong);
-    line-height: 1.4;
-}
-
-.faq-item ul {
-    margin-left: 15px;
-}
-
-.go-home {
-    display: inline-block;
-    margin: 30px auto 0;
-    padding: 12px 22px;
-    border-radius: 8px;
-    background-color: var(--primary);
-    color: var(--text-strong);
-    font-size: 16px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.go-home:hover {
-    background-color: rgba(102, 66, 33, 0.9);
-}
+.container { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; }
+.text-center { text-align: center; }
+.text-muted { color: #a39f98; }
+.glass-card .text-muted, .parchment-card .text-muted, .pinned-paper .text-muted { color: #5e4629; font-weight: 500; }
 
 /* Hero Section */
 .hero {
-    height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-image: linear-gradient(rgba(47, 27, 20, 0.45), rgba(47, 27, 20, 0.45)), url('https://static.vecteezy.com/system/resources/previews/012/687/745/large_2x/background-from-brown-wooden-vertical-planks-wood-texture-banner-design-with-copy-space-stock-illustration-vector.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-blend-mode: overlay;
-    position: relative;
+    min-height: 80vh; display: flex; align-items: center; justify-content: center;
+    position: relative; padding: 2rem;
 }
 
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    height: 500px;
-    background-image: url('https://png.pngtree.com/png-vector/20230814/ourmid/pngtree-ale-mug-and-beer-barrel-vector-illustration-with-wooden-barrel-sticker-png-image_6901603.png'); /* Coloque sua URL de imagem aqui */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.40;
-    z-index: 0;
-    pointer-events: none;
+.hero::before { display: none; }
+
+.hero-content { text-align: center; max-width: 800px; z-index: 2; animation: fadeUp 1s ease-out; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+.hero-tag {
+    display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--border-strong);
+    background: rgba(0,0,0,0.5); border-radius: 20px; font-size: 0.85rem;
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem;
+    color: var(--primary);
 }
 
-.hero .hero-content {
-    position: relative;
-    z-index: 1;
+.hero h1 { font-size: clamp(3rem, 6vw, 5rem); line-height: 1.1; margin-bottom: 1rem; }
+.hero p { font-size: 1.25rem; color: var(--text-light); margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+.hero-btns { display: flex; gap: 1rem; justify-content: center; }
+
+/* Medieval Parchment Cards */
+.glass-card, .parchment-card {
+    background: var(--bg-surface);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    border: 1px solid var(--border-light);
+    border-radius: 4px; padding: 2.5rem;
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.6), inset 0 0 20px rgba(94, 70, 41, 0.1);
+    color: var(--text-main);
 }
 
-/* Background de madeira geral na página (geral) */
-body {
-    background-color: var(--bg);
-    background-image: url('https://wallpapers.com/images/hd/tavern-background-67u2saz1pel0khcy.jpg');
-    background-size: cover;
-    background-repeat: repeat-y;
-    background-attachment: fixed;
-    color: var(--text);
-    overflow-x: hidden;
+/* Home Stats / Grid */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 4rem; }
+.stat-box { text-align: center; padding: 2rem; position: relative; }
+.stat-box::before {
+    content: '🍻'; position: absolute; bottom: 10px; right: 10px; font-size: 2rem; opacity: 0.3;
+}
+.stat-value { font-family: 'MedievalSharp', serif; font-size: 3rem; font-weight: 700; color: #4a1c1c; margin-bottom: 0.5rem; }
+.stat-label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 700; }
+
+/* Quest Selector Widget */
+.quest-widget { max-width: 700px; margin: 0 auto; }
+.quest-tabs { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; }
+.quest-tab {
+    background: #3b2818; border: 2px solid #1c0f08; color: var(--text-light);
+    padding: 0.6rem 1.5rem; border-radius: 4px; cursor: pointer; font-family: 'Cinzel', serif; font-weight: 700; transition: var(--transition-fast);
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.8), inset 0 2px 4px rgba(255,255,255,0.1);
+}
+.quest-tab:hover, .quest-tab.active { background: #4a1c1c; border-color: var(--primary); color: var(--primary); }
+
+.quest-display {
+    min-height: 120px; display: flex; align-items: center; justify-content: center;
+    text-align: center; font-size: 1.3rem; color: var(--text-strong);
+    border: 2px solid #5e4629; border-left: 8px solid #4a1c1c; font-family: 'Cinzel', serif;
+    background-color: var(--bg-surface);
 }
 
-/* Seção de Missões, com quadradinhos por baixo */
-.features {
-    padding: 50px 5%;
-    text-align: center;
-    background: linear-gradient(180deg, rgba(60, 30, 15, 0.70) 0%, rgba(47, 27, 20, 0.85) 100%), url('https://static.vecteezy.com/system/resources/previews/012/687/745/large_2x/background-from-brown-wooden-vertical-planks-wood-texture-banner-design-with-copy-space-stock-illustration-vector.jpg');
-    background-size: auto, cover;
-    max-width: 900px;
-    margin: 20px auto;
-    border: 3px solid var(--primary);
-    border-radius: 25px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    position: relative;
-    border-top: 2px solid rgba(255, 215, 0, 0.35);
-    box-shadow: inset 0 8px 20px rgba(0,0,0,0.2);
+/* About Page Styles */
+.about-hero { text-align: center; padding: 6rem 1rem 4rem; }
+.mission-section { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 6rem; }
+.mission-section.reverse { direction: rtl; }
+.mission-section.reverse > * { direction: ltr; }
+.mission-content h2 { font-size: 2.2rem; margin-bottom: 1.5rem; }
+
+.mission-image-wrapper {
+    position: relative; border-radius: 4px; overflow: hidden; aspect-ratio: 16/10;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.8); background: #000; border: 4px solid #3b2818;
+    outline: 2px solid #1c0f08;
 }
 
-.features::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: -22px;
-    height: 50px;
-    background: linear-gradient(180deg, rgba(47, 27, 20, 0.0), rgba(47, 27, 20, 0.85));
-    z-index: 1;
-    pointer-events: none;
+/* The Black Square placeholders */
+.placeholder-box {
+    width: 100%; height: 100%; background-color: #0c0a08;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted); font-family: 'Cinzel', serif; font-size: 0.9rem; text-transform: uppercase;
+    background-image: repeating-linear-gradient(45deg, #111 25%, transparent 25%, transparent 75%, #111 75%, #111), repeating-linear-gradient(45deg, #111 25%, #050505 25%, #050505 75%, #111 75%, #111);
+    background-position: 0 0, 10px 10px; background-size: 20px 20px;
 }
 
-.features::after {
-    content: '';
-    position: absolute;
-    left: 10%;
-    right: 10%;
-    top: 0;
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.6), transparent);
-    z-index: 2;
+/* Team Grid */
+.team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem; }
+.team-member { text-align: center; padding: 3rem 2rem; position: relative; }
+
+.member-avatar {
+    width: 120px; height: 120px; margin: 0 auto 1.5rem auto;
+    border: 4px solid #3b2818; outline: 2px solid #1c0f08;
+    border-radius: 50%; overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.8);
+}
+.member-avatar .placeholder-box { background-size: 10px 10px; } /* Smaller pattern for avatars */
+
+.member-role { color: #4a1c1c; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem; font-weight: 700; }
+
+/* FAQ Quest Board Styles */
+.quest-board-container {
+    background: #3b2818;
+    background-image: repeating-linear-gradient(to bottom, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.1) 2px, transparent 2px, transparent 40px);
+    border: 12px solid #1c0f08; border-radius: 8px; padding: 4rem 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.9), inset 0 0 30px rgba(0,0,0,0.8);
+    max-width: 900px; margin: 0 auto; position: relative;
 }
 
-.features > * {
-    position: relative;
-    z-index: 1;
+.quest-board-container::before, .quest-board-container::after,
+.quest-board-nails-2::before, .quest-board-nails-2::after {
+    content: ''; position: absolute; width: 16px; height: 16px; background: #111;
+    border-radius: 50%; box-shadow: inset -2px -2px 4px rgba(255,255,255,0.2), 2px 2px 4px rgba(0,0,0,0.8);
+}
+.quest-board-container::before { top: 10px; left: 10px; }
+.quest-board-container::after { bottom: 10px; right: 10px; }
+.quest-board-nails-2::before { top: 10px; right: 10px; }
+.quest-board-nails-2::after { bottom: 10px; left: 10px; }
+
+.faq-group-title {
+    font-size: 2rem; margin-bottom: 2rem; color: var(--primary); text-align: center;
+    background: rgba(0,0,0,0.6); display: inline-block; padding: 0.5rem 1.5rem;
+    border-radius: 4px; border: 2px solid #1c0f08;
 }
 
-.hero h1 { font-size: 4rem; text-transform: uppercase; margin-bottom: 10px; color: var(--text-strong); font-family: 'MedievalSharp', serif; }
-.hero h2 { color: var(--secondary); font-size: 2rem; text-align: center; margin-bottom: 20px; font-family: 'Cinzel', serif; }
-.hero p { color: var(--secondary); font-size: 1.2rem; text-align: center; font-family: 'Crimson Text', serif; }
+.faq-group { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; align-items: flex-start; margin-bottom: 4rem; }
 
-.cta-group { margin-top: 15px; }
-
-button {
-    padding: 15px 35px;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-    text-transform: uppercase;
-    font-family: 'Cinzel', serif;
-    font-size: 1rem;
+.pinned-paper {
+    background: var(--bg-surface);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    width: 100%; max-width: 380px; min-height: 150px; padding: 2rem 1.5rem 1.5rem;
+    box-shadow: 3px 5px 12px rgba(0,0,0,0.5); position: relative; color: var(--text-strong); border: 1px solid rgba(0,0,0,0.1);
 }
 
-.btn-main { background: var(--primary); color: white; margin-right: 15px; }
-.btn-main:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--primary); }
-
-.btn-sec { background: transparent; border: 2px solid var(--secondary); color: var(--secondary); }
-.btn-sec:hover { background: var(--secondary); color: var(--bg); }
-
-/* Seção de Missões */
-.features { padding: 80px 10%; text-align: center; }
-
-.features h2 { color: var(--secondary); }
-.features p { color: var(--text); }
-
-.quest-selector { margin-bottom: 10px; }
-.quest-selector button { background: var(--primary); color: white; margin: 3px; padding: 8px 15px; border: none; border-radius: 8px; cursor: pointer; transition: 0.3s; }
-
-.quest-selector button:hover { background: #654321; }
-
-.card {
-    background: var(--card);
-    padding: 25px;
-    border-radius: 20px;
-    border: 2px solid var(--primary);
-    min-height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-    transition: 0.5s;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-    color: var(--bg);
+.pinned-paper::before {
+    content: ''; position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+    width: 12px; height: 12px; background: #111; border-radius: 50%;
+    box-shadow: inset -1px -1px 2px rgba(255,255,255,0.4), 1px 2px 3px rgba(0,0,0,0.5); z-index: 2;
 }
 
-.stats-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+.pinned-paper:nth-child(even) { transform: rotate(1.5deg); }
+.pinned-paper:nth-child(odd) { transform: rotate(-1.5deg); }
+.pinned-paper:nth-child(3n) { transform: rotate(2deg); }
+
+.faq-question {
+    width: 100%; text-align: left; background: transparent; border: none; font-family: 'MedievalSharp', serif;
+    font-size: 1.3rem; font-weight: 700; color: #4a1c1c; cursor: pointer; padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.2); display: flex; justify-content: space-between; align-items: center;
+}
+.faq-question::after { content: '+'; font-size: 1.5rem; color: var(--text-muted); }
+.faq-item.active .faq-question::after { content: '-'; }
+
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; font-family: 'Crimson Text', serif; font-size: 1.1rem; line-height: 1.5; }
+.faq-answer-inner { padding-top: 1rem; }
+.faq-answer-inner ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+
+/* Footer */
+footer { text-align: center; padding: 3rem; border-top: 4px solid #1c0f08; background: #150e0a; margin-top: 4rem; color: var(--text-muted); font-size: 0.9rem; }
+
+.reveal-hidden { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal-visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .mission-section { grid-template-columns: 1fr; gap: 2rem; }
+    .hero h1 { font-size: 2.5rem; }
+    .btn { padding: 0.6rem 1.5rem; }
 }
 
-.stat-item {
-    background: var(--card);
-    padding: 15px;
-    border-radius: 15px;
-    border: 2px solid var(--primary);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-    text-align: center;
-    color: var(--bg);
+/* Split Layout Additions */
+.split-layout { display: flex; flex-direction: column; min-height: 100vh; }
+
+.top-half-sign {
+    min-height: 50vh;
+    background-color: var(--bg-base);
+    background-image: repeating-linear-gradient(to right, #1c140f 0px, #150e0a 15px, #1c140f 30px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 3rem 1rem; position: relative; border-bottom: 8px solid #0a0604;
 }
 
-.stat-item h3 {
-    color: #FFD700;
-    font-size: 2rem;
-    margin-bottom: 5px;
+.giant-wooden-sign {
+    background: #3b2818;
+    background-image: repeating-linear-gradient(to bottom, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 3px, transparent 3px, transparent 25px);
+    border: 12px solid #1c0f08; border-radius: 10px; padding: 4rem 3rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.9), inset 0 0 40px rgba(0,0,0,0.8);
+    position: relative; max-width: 900px; width: 100%;
 }
 
-.stat-item p {
-    color: var(--text-strong);
+.giant-wooden-sign::before, .giant-wooden-sign::after {
+    content: ''; position: absolute; top: -50px; width: 15px; height: 50px;
+    background-image: linear-gradient(to right, #222, #000); box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+}
+.giant-wooden-sign::before { left: 100px; }
+.giant-wooden-sign::after { right: 100px; }
+
+.tavern-bottom-half {
+    min-height: 60vh; background-size: cover; background-position: center bottom;
+    background-attachment: fixed; position: relative;
 }
 
-/* Santuário */
-.sanctuary {
-    padding: 40px 50px;
-    text-align: center;
-    background: linear-gradient(rgba(70, 35, 20, 0.75), rgba(70, 35, 20, 0.75)), url('https://static.vecteezy.com/system/resources/previews/012/687/745/large_2x/background-from-brown-wooden-vertical-planks-wood-texture-banner-design-with-copy-space-stock-illustration-vector.jpg');
-    background-size: auto, cover;
-    max-width: 800px;
-    margin: 20px auto;
-    border: 2px solid rgba(139, 69, 19, 0.5);
-    border-radius: 15px;
+.tavern-overlay {
+    background: linear-gradient(to bottom, rgba(10, 6, 4, 1) 0%, rgba(10, 6, 4, 0.7) 30%, rgba(20, 10, 5, 0.5) 100%);
+    width: 100%; height: 100%; min-height: inherit; padding-top: 2rem;
 }
-
-.sanctuary h2 {
-    color: var(--secondary);
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-.sanctuary p {
-    color: var(--text);
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.stat-item {
-    background: linear-gradient(rgba(139, 69, 19, 0.65), rgba(139, 69, 19, 0.65)), url('https://static.vecteezy.com/system/resources/previews/012/687/745/large_2x/background-from-brown-wooden-vertical-planks-wood-texture-banner-design-with-copy-space-stock-illustration-vector.jpg');
-    background-size: auto, cover;
-    padding: 30px;
-    border-radius: 15px;
-}
-
-.stat-item h3 { color: var(--secondary); font-size: 2rem; }
-
-footer { padding: 40px; text-align: center; color: var(--text); font-size: 0.8rem; }
-
-/* Container do About */
-.about-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Seção de Título do About */
-.section-title {
-    padding: 40px 50px;
-    text-align: center;
-    background: linear-gradient(180deg, rgba(100, 50, 25, 0.70) 0%, rgba(85, 42, 20, 0.65) 100%), url('https://static.vecteezy.com/system/resources/previews/012/687/745/large_2x/background-from-brown-wooden-vertical-planks-wood-texture-banner-design-with-copy-space-stock-illustration-vector.jpg');
-    background-size: auto, cover;
-    margin: 20px 0;
-}
-
-.section-title h1 {
-    font-size: 2.5rem;
-    color: var(--secondary);
-    margin-bottom: 15px;
-    font-family: 'MedievalSharp', serif;
-}
-
-.section-title p {
-    font-size: 1.1rem;
-    color: var(--text);
-    font-family: 'Cinzel', serif;
-}
-
-.mission {
-    display: flex;
-    align-items: center;
-    padding: 40px 50px;
-    gap: 40px;
-    background: linear-gradient(rgba(139, 69, 19, 0.55), rgba(139, 69, 19, 0.55)), url('https://static.vecteezy.com/system/resources/previews/012/687/745/large_2x/background-from-brown-wooden-vertical-planks-wood-texture-banner-design-with-copy-space-stock-illustration-vector.jpg');
-    background-size: auto, cover;
-    border: 2px solid rgba(139,69,19,0.5);
-    border-radius: 15px;
-    margin: 20px 0;
-}
-
-/* Efeito de Ziguezague */
-.mission:nth-of-type(even) {
-    flex-direction: row-reverse;
-}
-
-.mission-text { flex: 1; }
-
-.mission-text h2 {
-    font-size: 1.8rem;
-    color: var(--text-strong);
-    font-family: 'Cinzel', serif;
-    margin-bottom: 10px;
-}
-
-.mission-text p {
-    color: var(--text);
-    line-height: 1.5;
-    font-family: 'Crimson Text', serif;
-}
-.mission-image { flex: 1; }
-
-.mission-image img {
-    width: 100%;
-    border-radius: 15px;
-    filter: grayscale(20%);
-    border: 3px solid var(--primary);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-}
-
-/* Seção da Equipe */
-.team-section {
-    padding: 40px 50px;
-    background: linear-gradient(rgba(85, 42, 20, 0.60), rgba(85, 42, 20, 0.60)), url('https://static.vecteezy.com/system/resources/previews/012/687/745/large_2x/background-from-brown-wooden-vertical-planks-wood-texture-banner-design-with-copy-space-stock-illustration-vector.jpg');
-    background-size: auto, cover;
-    border: 2px solid rgba(139, 69, 19, 0.5);
-    border-radius: 15px;
-    margin: 20px 0;
-    text-align: center;
-}
-
-.team-title {
-    font-size: 2.5rem;
-    color: #FFD700;
-    margin-bottom: 30px;
-    font-family: 'MedievalSharp', serif;
-}
-
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.member-card {
-    background: var(--card);
-    padding: 20px;
-    border-radius: 15px;
-    border: 2px solid var(--primary);
-    transition: 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-}
-
-.member-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--secondary);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
-}
-
-.member-photo {
-    width: 120px;
-    height: 120px;
-    background: linear-gradient(135deg, #8B4513, #654321);
-    border: 3px solid var(--primary);
-    border-radius: 50%;
-    margin: 0 auto 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-}
-
-.member-card h3 { color: var(--text-strong); margin-bottom: 5px; font-family: 'Cinzel', serif; font-size: 1.2rem; }
-.role { color: var(--text-strong); font-weight: bold; font-size: 0.9rem; text-transform: uppercase; font-family: 'Cinzel', serif; }
-
-.stats {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 10px 0;
-    font-size: 0.75rem;
-    font-weight: bold;
-    color: var(--text-strong);
-    flex-wrap: wrap;
-}
-
-.bio { font-size: 0.85rem; color: var(--text-strong); line-height: 1.4; }

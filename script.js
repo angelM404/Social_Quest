@@ -1,90 +1,81 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- 1. BARRA DE PROGRESSO DE LEITURA ---
-    // Cria um feedback visual conforme o usuário desce a página
-    window.onscroll = () => {
+    // 1. Progress Bar
+    window.addEventListener('scroll', () => {
         const progressBar = document.getElementById("progress-bar");
         if (progressBar) {
-            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            let scrolled = (winScroll / height) * 100;
-            progressBar.style.width = scrolled + "%";
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            progressBar.style.width = (winScroll / height) * 100 + "%";
         }
-    };
-
-    // --- 2. SISTEMA DE REVELAÇÃO AO SCROLL (Intersection Observer) ---
-    // Faz as seções e cards aparecerem suavemente conforme entram na tela
-    const observerOptions = {
-        threshold: 0.15, // Gatilho quando 15% do elemento estiver visível
-        rootMargin: "0px 0px -50px 0px"
-    };
-
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                // Para de observar após revelar para otimizar performance
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    // Seleciona elementos para animar (da Home e do About)
-    const elementsToReveal = document.querySelectorAll('.mission, .member-card, .features, .stat-item');
-    
-    elementsToReveal.forEach(el => {
-        // Estado inicial via JS para evitar "pulos" caso o CSS demore a carregar
-        el.style.opacity = "0";
-        el.style.transform = "translateY(30px)";
-        el.style.transition = "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)";
-        revealObserver.observe(el);
     });
 
-    // --- 3. CONTADOR DE MOEDAS ANIMADO ---
-    // Simula o acúmulo de moedas da comunidade
+    // 2. Scroll Reveal Observer
+    const revealElements = document.querySelectorAll('.reveal-hidden');
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // 3. Counter Animation
     const coinElement = document.getElementById('coin-counter');
     if (coinElement) {
-        animateCounter('coin-counter', 25480, 2000); // ID, Alvo, Duração em ms
+        animateCounter(coinElement, 25480, 2000);
     }
 
+    // 4. Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    
+    // Apply initial theme
+    if (savedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        if (themeToggle) themeToggle.textContent = '🌞';
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeToggle.textContent = newTheme === 'light' ? '🌞' : '🌗';
+        });
+    }
+
+    // 5. FAQ Accordion Logic
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const item = question.parentElement;
+            const isActive = item.classList.contains('active');
+            const answer = question.nextElementSibling;
+
+            if (isActive) {
+                // Close
+                item.classList.remove('active');
+                answer.style.maxHeight = null;
+            } else {
+                // Open (without closing others)
+                item.classList.add('active');
+                answer.style.maxHeight = answer.scrollHeight + "px";
+            }
+        });
+    });
 });
 
-// --- 4. SISTEMA DE MISSÕES (INTERATIVIDADE) ---
-// Função global para ser chamada via HTML (onclick)
-const questData = {
-    beginner: "🌱 MISSÃO NÍVEL 1: Peça uma recomendação de café para um barista hoje.",
-    legendary: "👑 MISSÃO LENDÁRIA: Participe de um evento de networking e apresente-se para 3 pessoas."
-};
-
-function changeQuest(level) {
-    const card = document.getElementById('quest-card');
-    const text = document.getElementById('quest-text');
-    
-    if (!card || !text) return;
-
-    // Animação de transição rápida
-    card.style.opacity = "0";
-    card.style.transform = "scale(0.95)";
-
-    setTimeout(() => {
-        text.innerText = questData[level];
-        card.style.opacity = "1";
-        card.style.transform = "scale(1)";
-        // Muda a borda baseado na raridade
-        card.style.borderColor = level === 'legendary' ? '#fbbf24' : '#7c3aed';
-        card.style.boxShadow = level === 'legendary' ? '0 0 20px rgba(251, 191, 36, 0.2)' : 'none';
-    }, 300);
-}
-
-// --- 5. LÓGICA DO CONTADOR ---
-function animateCounter(id, target, duration) {
-    const element = document.getElementById(id);
+// Counter Logic
+function animateCounter(element, target, duration) {
     let startTimestamp = null;
     const step = (timestamp) => {
         if (!startTimestamp) startTimestamp = timestamp;
         const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        const currentCount = Math.floor(progress * target);
-        element.innerText = currentCount.toLocaleString();
+        element.innerText = Math.floor(progress * target).toLocaleString();
         if (progress < 1) {
             window.requestAnimationFrame(step);
         }
@@ -92,36 +83,36 @@ function animateCounter(id, target, duration) {
     window.requestAnimationFrame(step);
 }
 
-// --- 6. INJEÇÃO DE CLASSE CSS AUXILIAR ---
-// Adiciona a classe que finaliza a animação de revelação
-const styleSheet = document.createElement('style');
-styleSheet.innerHTML = `
-    .visible {
-        opacity: 1 !important;
-        transform: translateY(0) !important;
-    }
-`;
-document.head.appendChild(styleSheet);
+// Quest Widget Logic
+const questData = {
+    beginner: "🌱 MISSÃO NÍVEL 1: Peça uma recomendação de café para um barista hoje.",
+    legendary: "👑 MISSÃO LENDÁRIA: Participe de um evento de networking e apresente-se para 3 pessoas."
+};
 
-// --- 7. TEMA CLARO / ESCURO ---
-const themeToggle = document.getElementById('theme-toggle');
+function changeQuest(level, btnElement) {
+    // Update active tab styling
+    document.querySelectorAll('.quest-tab').forEach(tab => tab.classList.remove('active'));
+    if (btnElement) btnElement.classList.add('active');
 
-function applyTheme(theme) {
-    document.body.classList.toggle('light', theme === 'light');
-    document.body.classList.toggle('dark', theme === 'dark');
-    document.documentElement.setAttribute('data-theme', theme);
-    if (themeToggle) {
-        themeToggle.textContent = theme === 'light' ? '🌞' : '🌜';
-    }
-    localStorage.setItem('theme', theme);
-}
+    const card = document.getElementById('quest-card');
+    const text = document.getElementById('quest-text');
+    
+    if (!card || !text) return;
 
-const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-applyTheme(savedTheme);
+    card.style.opacity = "0";
+    card.style.transform = "translateY(10px) scale(0.98)";
 
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        const current = document.body.classList.contains('light') ? 'light' : 'dark';
-        applyTheme(current === 'light' ? 'dark' : 'light');
-    });
+    setTimeout(() => {
+        text.innerText = questData[level];
+        card.style.opacity = "1";
+        card.style.transform = "translateY(0) scale(1)";
+        
+        if (level === 'legendary') {
+            card.style.borderColor = '#fbbf24';
+            card.style.boxShadow = '0 0 30px rgba(251, 191, 36, 0.2)';
+        } else {
+            card.style.borderColor = '';
+            card.style.boxShadow = '';
+        }
+    }, 200);
 }

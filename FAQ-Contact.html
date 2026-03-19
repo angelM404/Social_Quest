@@ -3,132 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="light">
     <title>Social Quest | Perguntas Frequentes</title>
     <link rel="stylesheet" href="Style.css">
 </head>
 <body>
+    <div id="progress-bar"></div>
 
-    <nav>
-        <div class="logo">SOCIAL QUEST</div>
+    <nav class="navbar">
+        <div class="brand-logo">Social Quest</div>
         <div class="nav-links">
             <a href="Home.html">Home</a>
             <a href="About.html">Sobre</a>
-            <a href="FAQ-Contact.html">FAQ</a>
+            <a href="FAQ-Contact.html" class="active">FAQ</a>
         </div>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">🌗</button>
     </nav>
 
-    <main class="faq-page">
-        <h1>Social Quest</h1>
-        <h2>Por favor, leia com calma antes de enviar sua mensagem à corte.</h2>
-        <p>Guia de Perguntas Frequentes</p>
+    <main class="container">
+        <header class="text-center reveal-hidden" style="margin-bottom: 4rem;">
+            <h1>Mural de Avisos da Taverna</h1>
+            <p class="text-muted">Desvende os segredos do mundo da guilda antes de iniciar sua jornada.</p>
+        </header>
 
-        <section class="faq-section">
-            <h3 class="faq-section-title">Mundo do Jogo</h3>
-            <div class="faq-item">
-            <h2>O que é este jogo?</h2>
-        <p>É uma experiência mobile que mistura cidade real com uma narrativa leve de aventuras. Você caminha, descobre pontos de interesse e reúne-se em <strong>tavernas, mercadores e desafios</strong> com pitadas medievais.</p>
-    </div>
+        <section class="quest-board-container reveal-hidden">
+            <div class="quest-board-nails-2"></div>
+            
+            <div class="text-center">
+                <h2 class="faq-group-title">Mundo do Jogo</h2>
+            </div>
+            <div class="faq-group">
+                <div class="faq-item pinned-paper">
+                    <button class="faq-question">O que é este jogo?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            É uma experiência mobile que mistura o mundo real com uma narrativa de aventuras e gamificação. Você caminha, descobre pontos de interesse e completa missões para evoluir suas habilidades sociais.
+                        </div>
+                    </div>
+                </div>
 
-    <div class="faq-item">
-        <h2>Como começo a jogar?</h2>
-        <p>Crie seu avatar, abra o mapa e veja os locais marcados. Dirija-se a uma taverna próxima para aceitar as primeiras missões e ganhar reputação.</p>
-    </div>
+                <div class="faq-item pinned-paper">
+                    <button class="faq-question">Como começo a jogar?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Crie seu avatar, abra o mapa e veja os locais marcados. Dirija-se a uma taverna próxima para aceitar as primeiras missões e ganhar reputação.
+                        </div>
+                    </div>
+                </div>
 
-    <div class="faq-item">
-        <h2> O que são Tavernas?</h2>
-        <p>Tavernas são pontos do mapa onde você pode:</p>
-        <ul>
-            <li>Receber <strong>quests</strong></li>
-            <li>Conversar com <strong>NPCs</strong></li>
-            <li>Trocar <strong>pontos por recompensas</strong></li>
-            <li>Encontrar <strong>outros jogadores</strong></li>
-        </ul>
-    </div>
+                <div class="faq-item pinned-paper">
+                    <button class="faq-question">O que são as Tavernas?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Tavernas são locais reais marcados no mapa onde você pode:
+                            <ul>
+                                <li>Receber novas quests de NPCs virtuais.</li>
+                                <li>Trocar XP por recompensas no mundo real.</li>
+                                <li>Interagir com outros jogadores da guilda.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="faq-item">
-        <h2> Como eu pego quests?</h2>
-        <p>Você precisa <strong>ir fisicamente até uma taverna</strong> no mapa. Lá, NPCs irão oferecer diferentes quests que podem ser concluídas explorando a cidade.</p>
-    </div>
+                <div class="faq-item pinned-paper">
+                    <button class="faq-question">Como eu pego quests?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Você precisa se deslocar fisicamente até as tavernas marcadas no mapa da sua cidade. A geolocalização irá desbloquear os desafios.
+                        </div>
+                    </div>
+                </div>
 
-    <div class="faq-item">
-        <h2> Que tipos de quests existem?</h2>
-        <p>Alguns exemplos:</p>
-        <ul>
-            <li>Caminhar certa distância</li>
-            <li>Visitar locais específicos</li>
-            <li>Encontrar mercadores</li>
-            <li>Participar de eventos</li>
-            <li>Completar desafios sociais</li>
-        </ul>
-    </div>
+                <div class="faq-item pinned-paper">
+                    <button class="faq-question">Que tipos de quests existem?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Alguns exemplos:
+                            <ul>
+                                <li>Caminhar certa distância</li>
+                                <li>Visitar locais específicos</li>
+                                <li>Encontrar mercadores</li>
+                                <li>Participar de eventos</li>
+                                <li>Completar desafios sociais</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="faq-item">
-        <h2> O que eu ganho ao completar quests?</h2>
-        <p>Ao completar quests você ganha <strong>pontos de aventura</strong>, que podem ser trocados por:</p>
-        <ul>
-            <li>Itens</li>
-            <li>Equipamentos</li>
-            <li>Buffs</li>
-            <li>Cosméticos</li>
-        </ul>
-    </div>
+                <div class="faq-item pinned-paper">
+                    <button class="faq-question">O que ganho nas quests?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Ao completar quests você ganha pontos de aventura, que podem ser trocados por:
+                            <ul>
+                                <li>Itens e Equipamentos</li>
+                                <li>Buffs para o personagem</li>
+                                <li>Cosméticos exclusivos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="faq-item">
-        <h2> Quem são os mercadores?</h2>
-        <p>Mercadores são NPCs que aparecem <strong>aleatoriamente no mapa</strong>. Eles vendem itens raros que não podem ser obtidos nas tavernas.</p>
-    </div>
+                <div class="faq-item pinned-paper">
+                    <button class="faq-question">Quem são os mercadores?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Mercadores são NPCs que aparecem aleatoriamente no mapa. Eles vendem itens raros que não podem ser obtidos nas tavernas.
+                        </div>
+                    </div>
+                </div>
 
-    <div class="faq-item">
-        <h2> Preciso jogar com outras pessoas?</h2>
-        <p>Não é obrigatório, mas algumas quests podem ser <strong>cooperativas</strong>, incentivando jogadores a se encontrarem no mundo real.</p>
-    </div>
+                <div class="faq-item pinned-paper">
+                    <button class="faq-question">Gosta de jogar em grupo?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Não é obrigatório jogar com outras pessoas, mas algumas quests podem ser cooperativas, incentivando jogadores a se encontrarem no mundo real.
+                        </div>
+                    </div>
+                </div>
 
-    <div class="faq-item">
-        <h2> O jogo incentiva sair de casa?</h2>
-        <p>Sim. O jogo foi criado para incentivar <strong>exploração, caminhada e interação social</strong>, transformando sua cidade em um mundo medieval.</p>
-    </div>
-    </section>
+                <div class="faq-item pinned-paper">
+                    <button class="faq-question">O jogo me faz sair de casa?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Sim! O jogo foi criado para incentivar exploração, caminhada e interação social, transformando sua cidade em um mundo medieval.
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <section class="faq-section">
-        <h3 class="faq-section-title">Mundo real</h3>
+            <div class="text-center">
+                <h2 class="faq-group-title">Mundo Real & Privacidade</h2>
+            </div>
+            <div class="faq-group">
+                
+                <div class="faq-item pinned-paper">
+                    <button class="faq-question">O mapa tem locais reais?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Sim. Tavernas e outros pontos de interesse do jogo são baseados estritamente em locais reais e seguros do nosso mundo.
+                        </div>
+                    </div>
+                </div>
 
-    <div class="faq-item">
-        <h2> O mapa mostra locais reais?</h2>
-        <p>Sim. Tavernas e outros pontos do jogo são baseados em <strong>locais reais do mundo</strong>.</p>
-    </div>
+                <div class="faq-item pinned-paper">
+                    <button class="faq-question">Posso jogar em qualquer cidade?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Sim. O sistema inteligente gera pontos de interesse automaticamente em diferentes cidades, bairros e regiões.
+                        </div>
+                    </div>
+                </div>
 
-    <div class="faq-item">
-        <h2> Posso jogar em qualquer cidade?</h2>
-        <p>Sim. O sistema gera pontos de interesse automaticamente em diferentes cidades.</p>
-    </div>
+                <div class="faq-item pinned-paper">
+                    <button class="faq-question">O jogo é gratuito?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Sim, o acesso à guilda e as missões iniciais são totalmente gratuitos, possuindo apenas itens cosméticos opcionais na loja.
+                        </div>
+                    </div>
+                </div>
 
-    <div class="faq-item">
-        <h2> O jogo é gratuito?</h2>
-        <p>Sim, o jogo é gratuito para jogar, com compras opcionais dentro do aplicativo.</p>
-    </div>
+                <div class="faq-item pinned-paper">
+                    <button class="faq-question">Usa minha internet e GPS?</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Sim. Para desbloquear as mecânicas de mundo e missões geolocalizadas, é obrigatório o uso de GPS e conexão ativa com a internet.
+                        </div>
+                    </div>
+                </div>
 
-    <div class="faq-item">
-        <h2> Preciso de internet para jogar?</h2>
-        <p>Sim. O jogo usa <strong>GPS e conexão com a internet</strong> para atualizar o mapa e as quests.</p>
-    </div>
+            </div>
 
-    </section>
-
-    <section class="faq-section">
-        <h3 class="faq-section-title">Contato</h3>
-
-        <div class="faq-item">
-            <h2> Contatos</h2>
-            <p>Se você tiver dúvidas ou precisar de ajuda, entre em contato conosco através do email <a href="mailto:support@socialquest.com">support@socialquest.com</a>.</p>
-        </div>
-
-        <div style="text-align: center; margin-top: 24px;">
-            <a class="go-home" href="Home.html">Voltar para a página inicial</a>
-        </div>
-    </section>
-
+            <div class="text-center pinned-paper" style="margin: 0 auto; min-height: auto; transform: rotate(0deg); max-width: 600px;">
+                <h3 style="color: #4a1c1c; font-size: 1.5rem; margin-bottom: 0.5rem;">Cartorial da Guilda</h3>
+                <p>Ainda possui dúvidas? Envie um corvo para nossa equipe de suporte:</p>
+                <a href="mailto:support@socialquest.com" class="btn" style="margin-top: 1rem;">support@socialquest.com</a>
+            </div>
+        </section>
     </main>
+
+    <footer>
+        <p>&copy; 2026 Social Quest Guild. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
