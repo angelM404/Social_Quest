@@ -62,6 +62,60 @@ nav {
 
 .nav-links a:hover { color: var(--secondary); }
 
+/* FAQ / Contact */
+.faq-page {
+    padding: 100px 10%;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.faq-page h1 {
+    text-align: center;
+    color: var(--secondary);
+    font-size: 2.4rem;
+    margin-bottom: 30px;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+    padding: 18px;
+    border-radius: 15px;
+    background-color: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(124, 58, 237, 0.25);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+.faq-item h2 {
+    color: #d8b4fe;
+}
+
+.faq-item p,
+.faq-item li {
+    color: #cbd5e1;
+    line-height: 1.6;
+}
+
+.faq-item ul {
+    margin-left: 20px;
+}
+
+.go-home {
+    display: inline-block;
+    margin: 30px auto 0;
+    padding: 12px 22px;
+    border-radius: 8px;
+    background-color: var(--primary);
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.go-home:hover {
+    background-color: #5b21b6;
+}
+
 /* Hero Section */
 .hero {
     height: 80vh;
