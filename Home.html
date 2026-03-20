@@ -1,77 +1,85 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="light">
     <title>Social Quest | Sua Jornada Começa</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Style.css">
 </head>
-<body>
 
+<body>
     <div id="progress-bar"></div>
 
-    <nav>
-        <div class="logo">SOCIAL QUEST</div>
+    <nav class="navbar">
+        <div class="brand-logo">Social Quest</div>
         <div class="nav-links">
-            <a href="Home.html">Home</a>
+            <a href="Home.html" class="active">Home</a>
             <a href="About.html">Sobre</a>
             <a href="FAQ-Contact.html">FAQ</a>
         </div>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">🌗</button>
     </nav>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Social Quest</h1>
-            <h2>Transforme a sua vida social em uma <span class="highlight">jornada épica</span>.</h2>
-            <p>Vença a timidez, complete missões no mundo real e suba de nível.</p>
-            <div class="cta-group">
-                <button class="btn-main">Começar a Jornada</button>
-                <button class="btn-sec">Baixar o App</button>
+    <div class="split-layout">
+        <!-- Top Half: Wooden Sign -->
+        <header class="hero top-half-sign">
+            <div class="giant-wooden-sign">
+                <div class="hero-content">
+                    <span class="hero-tag wooden-plank" style="padding: 0.5rem 1.5rem; font-size: 1rem;">🗡️ Aventura na
+                        Vida Real</span>
+                    <h1>Sua Jornada Social Começa Aqui</h1>
+                    <p>Vença a timidez, complete missões no mundo real e suba de nível na vida. Evolua seus atributos
+                        como num RPG.</p>
+                    <div class="hero-btns">
+                        <button class="btn btn-primary">Começar a Jornada</button>
+                        <button class="btn btn-outline">Baixar o App</button>
+                    </div>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <section class="features">
-        <div class="section-title">
-            <h2>Escolha sua Missão</h2>
-            <p>Selecione uma dificuldade para ver um exemplo:</p>
-        </div>
-        
-        <div class="quest-selector">
-            <button onclick="changeQuest('beginner')">Iniciante</button>
-            <button onclick="changeQuest('legendary')">Lendário</button>
-        </div>
+        <!-- Bottom Half: Tavern Photo -->
+        <main class="tavern-bottom-half" style="background-image: url('tavern_party_1773938481912.png');">
+            <div class="tavern-overlay">
+                <div class="container">
+                    <section class="text-center reveal-hidden" style="margin-bottom: 4rem;">
+                        <h2 class="wooden-plank" style="font-size: 2rem; margin-bottom: 1rem;">Mural de Missões</h2>
+                        <p class="text-muted" style="margin-top: 1rem; color: #f4ecce;">Selecione uma dificuldade para
+                            ver o que te espera em sua jornada.</p>
 
-        <div id="quest-card" class="card">
-            <p id="quest-text">Clique em um nível acima para carregar sua missão...</p>
-        </div>
+                        <div class="quest-widget">
+                            <div class="quest-tabs">
+                                <button class="quest-tab active"
+                                    onclick="changeQuest('beginner', this)">Iniciante</button>
+                                <button class="quest-tab" onclick="changeQuest('legendary', this)">Lendário</button>
+                            </div>
+                            <div id="quest-card" class="glass-card quest-display">
+                                <p id="quest-text">🌱 MISSÃO NÍVEL 1: Peça uma recomendação de café para um barista
+                                    hoje.</p>
+                            </div>
+                        </div>
+                    </section>
 
-        <div class="stats-grid">
-            <div class="stat-item">
-                <h3 id="coin-counter">0</h3>
-                <p>Moedas Coletadas</p>
+                    <section class="stats-grid">
+                        <div class="glass-card stat-box reveal-hidden">
+                            <div class="stat-value" id="coin-counter">0</div>
+                            <div class="stat-label">Moedas Coletadas pela Comunidade</div>
+                        </div>
+                        <div class="glass-card stat-box reveal-hidden">
+                            <div class="stat-value">🍻</div>
+                            <div class="stat-label">Loja do Aventureiro: Troque XP por Bebidas e Prêmios</div>
+                        </div>
+                    </section>
+                </div>
             </div>
-            <div class="stat-item">
-                <h3>Loja do Aventureiro</h3>
-                <p>Troque XP por Prêmios Reais</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="sanctuary">
-        <div class="container">
-            <h2>Santuário</h2>
-            <p>Um ambiente seguro, sem julgamentos e com progresso gradual para sua evolução.</p>
-        </div>
-    </section>
+        </main>
+    </div>
 
     <footer>
-        <p>&copy; 2026 Social Quest. Todos os direitos reservados à .</p>
+        <p>&copy; 2026 Social Quest Guild. Todos os direitos reservados.</p>
     </footer>
 
     <script src="script.js"></script>
 </body>
+
 </html>
